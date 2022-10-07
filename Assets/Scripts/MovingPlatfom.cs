@@ -22,5 +22,16 @@ public class MovingPlatfom : MonoBehaviour
     {
         float step = Speed * Time.deltaTime;
         Platform.transform.position = Vector2.MoveTowards(Platform.transform.position, CurrentDestination.position, step);
+        if (Platform.transform.position == CurrentDestination.position)
+        {
+            if (CurrentDestination == StartPosition)
+            {
+                CurrentDestination = EndPosition;
+            }
+            else
+            {
+                CurrentDestination = StartPosition;
+            }
+        }
     }
 }
