@@ -4,13 +4,26 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public float PlayerDirection;
+    public bool JumpButtonPress;
     Rigidbody2D playerOne;
-        public float playerSpeed;
-    public float playerJump; 
+        public float PlayerSpeed;
+    public float PlayerJump;
+    public LayerMask RayCastMask;
+    public GameObject fireball;
+    public HealthBar health;
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            health.slider.value =- 20;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
         playerOne = GetComponent<Rigidbody2D>();
+        health.SetMaxHealth(100);
     }
 
     // Update is called once per frame
@@ -18,19 +31,41 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown("w"))
         {
-            playerOne.AddForce(Vector2.up * playerJump);
+           JumpButtonPress = true;
         }
+        PlayerDirection = Input.GetAxis("Horizontal");
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(fireball, transform.position, Quaternion.identity);
+            
+        }
+        
+             
+        
+       
+        
+            
+      
     }
     private void FixedUpdate()
     {
-        
-        if (Input.GetKey("d"))
+        if (JumpButtonPress == true)
         {
-            playerOne.velocity = new Vector2(playerSpeed, playerOne.velocity.y);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, .6f, RayCastMask);
+            if(hit.transform != null)
+            {
+                Debug.Log("hit ground");
+                playerOne.AddForce(Vector2.up * PlayerJump);
+            }
+            JumpButtonPress=false;
+
         }
-        if (Input.GetKey("a"))
-        {
-            playerOne.velocity = new Vector2(-playerSpeed, playerOne.velocity.y);
-        }
+        playerOne.velocity = new Vector2(PlayerSpeed * PlayerDirection, playerOne.velocity.y);
+    
+
+
+    
     }
+    
 }
