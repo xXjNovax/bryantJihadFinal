@@ -8,6 +8,7 @@ TagManager:
   - Enemyedge
   - Enemy
   - Fireball
+  - EndOfLevel
   layers:
   - Default
   - TransparentFX

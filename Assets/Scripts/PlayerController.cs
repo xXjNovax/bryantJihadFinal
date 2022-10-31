@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public float PlayerDirection;
@@ -12,11 +12,16 @@ public class PlayerController : MonoBehaviour
     public LayerMask RayCastMask;
     public GameObject fireball;
     public HealthBar health;
+    public int EndLevel;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
             health.slider.value =- 20;
+        }
+        if(collision.gameObject.tag == "EndOfLevel")
+        {
+           // SceneManager.LoadScene(EndLevel);
         }
     }
     // Start is called before the first frame update
