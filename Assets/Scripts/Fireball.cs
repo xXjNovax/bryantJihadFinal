@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Fireball : MonoBehaviour
 {
-    public float speed = 100f;
+    public float speed = 900f;
     public Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -21,7 +21,7 @@ public class Fireball : MonoBehaviour
 
     private void Update()
     {
-       transform.position = new Vector2 (transform.position.x + 1*Time.deltaTime, transform.position.y);
+      
     }
 
 }

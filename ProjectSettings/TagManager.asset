@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Fireball
   - EndOfLevel
+  - Hopz
   layers:
   - Default
   - TransparentFX

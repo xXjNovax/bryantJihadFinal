@@ -13,6 +13,17 @@ public class PlayerController : MonoBehaviour
     public GameObject fireball;
     public HealthBar health;
     public int EndLevel;
+    public bool HopzPowerUp;
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Hopz")
+        {
+            HitHopzPowerUp();
+            Destroy(collision.gameObject);
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
@@ -52,6 +63,11 @@ public class PlayerController : MonoBehaviour
         
             
       
+    }
+
+    private void HitHopzPowerUp()
+    {
+        PlayerJump = 675;
     }
     private void FixedUpdate()
     {
