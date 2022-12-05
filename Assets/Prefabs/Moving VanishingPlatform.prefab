@@ -101,9 +101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Playerisonplatform: 0
   Alpha: 0
-  Speed: 0
-  ComeBackTimer: 0
-  ComeBackTimerMax: 0
+  Speed: 0.000005
+  ComeBackTimer: 3
+  ComeBackTimerMax: 5
 --- !u!61 &3089928527159906172
 BoxCollider2D:
   m_ObjectHideFlags: 0

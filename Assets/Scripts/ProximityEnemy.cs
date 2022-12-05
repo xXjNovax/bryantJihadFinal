@@ -1,11 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class ProximityEnemy : MonoBehaviour
 {
     public float DistanceToPlayer;
     public GameObject Player;
+    public float Speed;
+    public float MinDistance;
+    public float MaxDistance;
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Fireball")
+        {
+            Destroy(gameObject);
+
+        }
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -17,9 +31,25 @@ public class ProximityEnemy : MonoBehaviour
     void Update()
     {
         DistanceToPlayer = Vector2.Distance(transform.position, Player.transform.position);
-        if (DistanceToPlayer < 10 && DistanceToPlayer > 2)
+        if (DistanceToPlayer < MaxDistance && DistanceToPlayer > MinDistance)
         {
-            Debug.Log("Is in range");
+            float step = Speed * Time.deltaTime;
+
+            transform.position = Vector2.MoveTowards(transform.position, Player.transform.position, step);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if ( collision.gameObject.tag == "Fireball")
+        {
+            Destroy(gameObject);
+
+        }
+        if (collision.gameObject.tag == "Player")
+        {
+            //Damage to Player
+            Destroy (gameObject);
         }
     }
 }

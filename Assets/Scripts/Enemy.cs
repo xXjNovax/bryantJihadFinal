@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
     {
         FlyGuy.transform.position = StartPosition.position;
         CurrentDestination = EndPosition;
+        Player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame

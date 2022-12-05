@@ -10,11 +10,14 @@ public class MovingPlatfom : MonoBehaviour
     public GameObject Platform;
     public Transform CurrentDestination;
     public float Speed;
+    public bool PlayerIsOn;
+    public bool NeedsPlayer;
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.tag == "Player")
         {
             collision.transform.parent = gameObject.transform;
+            PlayerIsOn = true;
         }
     }
     public void OnCollisionExit2D(Collision2D collision)
@@ -22,6 +25,7 @@ public class MovingPlatfom : MonoBehaviour
         if (collision.transform.tag == "Player")
         {
             collision.transform.parent = null;
+            PlayerIsOn = false;
         }
     }
 
@@ -35,6 +39,33 @@ public class MovingPlatfom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(NeedsPlayer == true)
+        {
+            if (PlayerIsOn == true)
+            {
+                MovePlatform();
+            }
+            else
+            {
+                ReturPlatform();
+            }
+            
+        
+        }
+        else
+        {
+
+            MovePlatform();
+            
+        }
+        
+
+     
+    }
+
+    public void MovePlatform()
+    {
+
         float step = Speed * Time.deltaTime;
         Platform.transform.position = Vector2.MoveTowards(Platform.transform.position, CurrentDestination.position, step);
         if (Platform.transform.position == CurrentDestination.position)
@@ -48,5 +79,13 @@ public class MovingPlatfom : MonoBehaviour
                 CurrentDestination = StartPosition;
             }
         }
+        
     }
+    public void ReturPlatform()
+    {
+        float step = Speed * Time.deltaTime;
+        Platform.transform.position = Vector2.MoveTowards(Platform.transform.position, StartPosition.position, step);
+        
+        
+        }
 }

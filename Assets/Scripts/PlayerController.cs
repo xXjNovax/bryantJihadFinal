@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
-    public float PlayerDirection;
+    public float PlayerMovement;
     public bool JumpButtonPress;
     Rigidbody2D playerOne;
         public float PlayerSpeed;
@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     public HealthBar health;
     public int EndLevel;
     public bool HopzPowerUp;
+    public float PlayerDirection;
+    public float RaycastDistance;
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -23,12 +25,16 @@ public class PlayerController : MonoBehaviour
             HitHopzPowerUp();
             Destroy(collision.gameObject);
         }
+        if (collision.gameObject.tag == "Enemy")
+        {
+            health.slider.value -= 20;
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            health.slider.value =- 20;
+            health.slider.value -= 20;
         }
         if(collision.gameObject.tag == "EndOfLevel")
         {
@@ -49,13 +55,24 @@ public class PlayerController : MonoBehaviour
         {
            JumpButtonPress = true;
         }
-        PlayerDirection = Input.GetAxis("Horizontal");
+        PlayerMovement = Input.GetAxis("Horizontal");
+        if(PlayerMovement > 0)
+        {
+            PlayerDirection = 1;
+        }
+        else if(PlayerMovement < 0)
+        {
+            PlayerDirection = -1;
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(fireball, transform.position, Quaternion.identity);
+           var currentFireball = Instantiate(fireball, transform.position, Quaternion.identity);
+            currentFireball.GetComponent<Fireball>().Direction = PlayerDirection;
+           
             
         }
+
         
              
         
@@ -73,7 +90,7 @@ public class PlayerController : MonoBehaviour
     {
         if (JumpButtonPress == true)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, .6f, RayCastMask);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, RaycastDistance, RayCastMask);
             if(hit.transform != null)
             {
                 Debug.Log("hit ground");
@@ -82,7 +99,7 @@ public class PlayerController : MonoBehaviour
             JumpButtonPress=false;
 
         }
-        playerOne.velocity = new Vector2(PlayerSpeed * PlayerDirection, playerOne.velocity.y);
+        playerOne.velocity = new Vector2(PlayerSpeed * PlayerMovement, playerOne.velocity.y);
     
 
 

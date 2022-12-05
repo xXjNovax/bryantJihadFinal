@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2367086202453489879}
   m_Layer: 0
   m_Name: FirstEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,6 +44,22 @@ PrefabInstance:
     - target: {fileID: 5827405243452498969, guid: 3a1b0d489aac80d4b91788b8df077355, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5827405243452498971, guid: 3a1b0d489aac80d4b91788b8df077355, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1542880673, guid: 86d6eb6153ba633458cc2ac704a517fe, type: 3}
+    - target: {fileID: 5827405243452498971, guid: 3a1b0d489aac80d4b91788b8df077355, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5827405243452498971, guid: 3a1b0d489aac80d4b91788b8df077355, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5827405243452498971, guid: 3a1b0d489aac80d4b91788b8df077355, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5827405243452498972, guid: 3a1b0d489aac80d4b91788b8df077355, type: 3}
       propertyPath: m_RootOrder
@@ -88,6 +104,30 @@ PrefabInstance:
     - target: {fileID: 5827405243452498972, guid: 3a1b0d489aac80d4b91788b8df077355, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5827405243452498975, guid: 3a1b0d489aac80d4b91788b8df077355, type: 3}
+      propertyPath: m_Size.x
+      value: 0.73604965
+      objectReference: {fileID: 0}
+    - target: {fileID: 5827405243452498975, guid: 3a1b0d489aac80d4b91788b8df077355, type: 3}
+      propertyPath: m_Size.y
+      value: 1.1817648
+      objectReference: {fileID: 0}
+    - target: {fileID: 5827405243452498975, guid: 3a1b0d489aac80d4b91788b8df077355, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.07956314
+      objectReference: {fileID: 0}
+    - target: {fileID: 5827405243452498975, guid: 3a1b0d489aac80d4b91788b8df077355, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.15518582
+      objectReference: {fileID: 0}
+    - target: {fileID: 5827405243452498975, guid: 3a1b0d489aac80d4b91788b8df077355, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.4733334
+      objectReference: {fileID: 0}
+    - target: {fileID: 5827405243452498975, guid: 3a1b0d489aac80d4b91788b8df077355, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.58
       objectReference: {fileID: 0}
     - target: {fileID: 5827405243452499168, guid: 3a1b0d489aac80d4b91788b8df077355, type: 3}
       propertyPath: Speed
