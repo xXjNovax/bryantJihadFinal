@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HealthBar : MonoBehaviour
 {
     
     public Slider slider;
-    
     
     public void SetMaxHealth(int health)
     {
@@ -20,4 +20,14 @@ public class HealthBar : MonoBehaviour
         slider.value = health;
        
     }
+    public void FixedUpdate()
+    {
+        
+        if(slider.value <= 0)
+        {
+            
+            SceneManager.LoadScene(2);
+        }
+    }
+    
 }

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenuController : MonoBehaviour
 {
     public void Start()
+
     {
         Application.targetFrameRate = 60;
     }
@@ -13,4 +14,5 @@ public class MainMenuController : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+    
 }

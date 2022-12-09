@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public static int LevelNumber;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,8 +26,21 @@ public class GameController : MonoBehaviour
 
         {
 
-            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            MainMenuLoad();
 
         }
+
+    }
+    public void MainMenuLoad()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+    public void CloseGame()
+    {
+        Application.Quit();
+    }
+    public void LoadLevel1()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 }

@@ -16,7 +16,8 @@ public class PlayerController : MonoBehaviour
     public bool HopzPowerUp;
     public float PlayerDirection;
     public float RaycastDistance;
-
+    public Animator MyAnimator;
+    public AudioClip JumpsEffect;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -54,15 +55,26 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown("w"))
         {
            JumpButtonPress = true;
+           
         }
         PlayerMovement = Input.GetAxis("Horizontal");
         if(PlayerMovement > 0)
         {
             PlayerDirection = 1;
+            GetComponent<SpriteRenderer>().flipX = false;
         }
         else if(PlayerMovement < 0)
         {
             PlayerDirection = -1;
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
+        if(PlayerMovement != 0)
+        {
+            MyAnimator.SetBool("Ismoving", true);
+        }
+        else
+        {
+            MyAnimator.SetBool("Ismoving", false);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -95,6 +107,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("hit ground");
                 playerOne.AddForce(Vector2.up * PlayerJump);
+                AudioSource.PlayClipAtPoint(JumpsEffect, transform.position);
             }
             JumpButtonPress=false;
 
