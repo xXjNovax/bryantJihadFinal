@@ -10,11 +10,13 @@ public class ProximityEnemy : MonoBehaviour
     public float Speed;
     public float MinDistance;
     public float MaxDistance;
+    public AudioClip ProximitysEffect;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Fireball")
         {
+            AudioSource.PlayClipAtPoint(ProximitysEffect, transform.position);
             Destroy(gameObject);
 
         }

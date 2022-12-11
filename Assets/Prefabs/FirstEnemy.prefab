@@ -142,6 +142,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8988428141089698703}
     - target: {fileID: 5827405243452499168, guid: 3a1b0d489aac80d4b91788b8df077355, type: 3}
+      propertyPath: FlyGuysEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: 54a5881ea3cbe374799539b0015e2e90, type: 3}
+    - target: {fileID: 5827405243452499168, guid: 3a1b0d489aac80d4b91788b8df077355, type: 3}
       propertyPath: StartPosition
       value: 
       objectReference: {fileID: 6471619503962194575}

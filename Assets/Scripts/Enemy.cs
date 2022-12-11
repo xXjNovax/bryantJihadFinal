@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public Transform CurrentDestination;
     public float Speed;
     public float DistanceToPlayer;
+    public AudioClip FlyGuysEffect;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if ( collision.gameObject.tag == "Fireball")
@@ -54,7 +55,9 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Fireball")
         {
+            AudioSource.PlayClipAtPoint(FlyGuysEffect, transform.position);
             Destroy(gameObject);
+
 
         }
     }

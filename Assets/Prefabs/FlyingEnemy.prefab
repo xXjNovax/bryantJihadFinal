@@ -151,3 +151,4 @@ MonoBehaviour:
   Speed: 3
   MinDistance: 1
   MaxDistance: 10
+  ProximitysEffect: {fileID: 8300000, guid: 54a5881ea3cbe374799539b0015e2e90, type: 3}

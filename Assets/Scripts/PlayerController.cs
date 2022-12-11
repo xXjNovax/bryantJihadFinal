@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public float RaycastDistance;
     public Animator MyAnimator;
     public AudioClip JumpsEffect;
+    public AudioClip FireballsEffect;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -79,10 +80,12 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-           var currentFireball = Instantiate(fireball, transform.position, Quaternion.identity);
+            AudioSource.PlayClipAtPoint(FireballsEffect, transform.position);
+            var currentFireball = Instantiate(fireball, transform.position, Quaternion.identity);
             currentFireball.GetComponent<Fireball>().Direction = PlayerDirection;
            
-            
+
+
         }
 
         
